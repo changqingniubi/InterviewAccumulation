@@ -16,7 +16,7 @@ var vm = new Vue({
 });
 ```
 结果
-![1](https://github.com/changqingniubi/MyImage/blob/master/%E9%9D%A2%E8%AF%95%E9%A2%98%E5%86%99%E4%BD%9C%E5%9B%BE%E7%89%87/1.vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/1.png?raw=true)
+![1](https://github.com/changqingniubi/InterviewAccumulation/blob/master/1.vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/image/1.png?raw=true)
 
 
 我们可以看到属性a有两个相对应的get和set方法，为什么会多出这两个方法呢？因为vue是通过Object.defineProperty()来实现数据劫持的。
@@ -61,11 +61,11 @@ console.log(Book.name);  // 《vue权威指南》
 ### 思路分析
 
 实现mvvm主要包含两个方面，数据变化更新视图，视图变化更新数据：
-![2](https://github.com/changqingniubi/MyImage/blob/master/%E9%9D%A2%E8%AF%95%E9%A2%98%E5%86%99%E4%BD%9C%E5%9B%BE%E7%89%87/1.vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/2.jpg?raw=true)
+![2](https://github.com/changqingniubi/InterviewAccumulation/blob/master/1.vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/image/2.jpg?raw=true)
 
 
 关键点在于data如何更新view，因为view更新data其实可以通过事件监听即可，比如input标签监听 'input' 事件就可以实现了。所以我们着重来分析下，当数据改变，如何更新视图的。数据更新视图的重点是如何知道数据变了，只要知道数据变了，那么接下去的事都好处理。如何知道数据变了，其实上文我们已经给出答案了，就是通过Object.defineProperty( )对属性设置一个set函数，当数据改变了就会来触发这个函数，所以我们只要将一些需要更新的方法放在这里面就可以实现data更新view了
-![3](https://github.com/changqingniubi/MyImage/blob/master/%E9%9D%A2%E8%AF%95%E9%A2%98%E5%86%99%E4%BD%9C%E5%9B%BE%E7%89%87/1.vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/3.jpg?raw=true)
+![3](https://github.com/changqingniubi/InterviewAccumulation/blob/master/1.vue双向绑定/image/3.jpg?raw=true)
 
 
 思路有了，接下去就是实现过程了。
@@ -78,7 +78,7 @@ console.log(Book.name);  // 《vue权威指南》
 2. 实现一个订阅者Watcher，可以收到属性的变化通知并执行相应的函数，从而更新视图。
 3. 实现一个解析器Compile，可以扫描和解析每个节点的相关指令，并根据初始化模板数据以及初始化相应的订阅器。
 流程图如下：
-![4](https://github.com/changqingniubi/MyImage/blob/master/%E9%9D%A2%E8%AF%95%E9%A2%98%E5%86%99%E4%BD%9C%E5%9B%BE%E7%89%87/1.vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/4.png?raw=true)
+![4](https://github.com/changqingniubi/InterviewAccumulation/blob/master/1.vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/image/4.png?raw=true)
 
 ### 1.实现一个Observer
 
@@ -522,4 +522,4 @@ function SelfVue (options) {
 
 
 想要代码，直接 [点击这里获取](
-https://github.com/changqingniubi/InterviewAccumulation/tree/master/%E9%9D%A2%E8%AF%95%E9%A2%98%E5%86%99%E4%BD%9C%E5%9B%BE%E7%89%87/1.vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/code)
+https://github.com/changqingniubi/InterviewAccumulation/tree/master/1.vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/code)
